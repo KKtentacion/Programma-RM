@@ -1,9 +1,9 @@
 gc_2.0_main_1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
-gc_2.0_main_1\tasks.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdlib.h
-gc_2.0_main_1\tasks.o: D:\keil c51\ARM\ARMCC\Bin\..\include\string.h
+gc_2.0_main_1\tasks.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdlib.h
+gc_2.0_main_1\tasks.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\string.h
 gc_2.0_main_1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-gc_2.0_main_1\tasks.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stddef.h
-gc_2.0_main_1\tasks.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdint.h
+gc_2.0_main_1\tasks.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+gc_2.0_main_1\tasks.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdint.h
 gc_2.0_main_1\tasks.o: ../Core/Inc/FreeRTOSConfig.h
 gc_2.0_main_1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 gc_2.0_main_1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

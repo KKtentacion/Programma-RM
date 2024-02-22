@@ -1,8 +1,8 @@
 gc_2.0_main_1\gantry.o: ..\ROTS_task\gantry.c
 gc_2.0_main_1\gantry.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 gc_2.0_main_1\gantry.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-gc_2.0_main_1\gantry.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stddef.h
-gc_2.0_main_1\gantry.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdint.h
+gc_2.0_main_1\gantry.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+gc_2.0_main_1\gantry.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdint.h
 gc_2.0_main_1\gantry.o: ../Core/Inc/FreeRTOSConfig.h
 gc_2.0_main_1\gantry.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 gc_2.0_main_1\gantry.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -54,9 +54,9 @@ gc_2.0_main_1\gantry.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 gc_2.0_main_1\gantry.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 gc_2.0_main_1\gantry.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 gc_2.0_main_1\gantry.o: ..\User\AlgorithmLayer\PID.h
-gc_2.0_main_1\gantry.o: D:\keil c51\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\arm_math.h
-gc_2.0_main_1\gantry.o: D:\keil c51\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
-gc_2.0_main_1\gantry.o: D:\keil c51\ARM\ARMCC\Bin\..\include\string.h
-gc_2.0_main_1\gantry.o: D:\keil c51\ARM\ARMCC\Bin\..\include\math.h
+gc_2.0_main_1\gantry.o: E:\Keil_pack\ARM\CMSIS\5.0.1\CMSIS\Include\arm_math.h
+gc_2.0_main_1\gantry.o: E:\Keil_pack\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+gc_2.0_main_1\gantry.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\string.h
+gc_2.0_main_1\gantry.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\math.h
 gc_2.0_main_1\gantry.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 gc_2.0_main_1\gantry.o: ..\ROTS_task\gantry.h

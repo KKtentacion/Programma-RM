@@ -1,8 +1,8 @@
 gc_2.0_main_1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
-gc_2.0_main_1\heap_4.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdlib.h
+gc_2.0_main_1\heap_4.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdlib.h
 gc_2.0_main_1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-gc_2.0_main_1\heap_4.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stddef.h
-gc_2.0_main_1\heap_4.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdint.h
+gc_2.0_main_1\heap_4.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+gc_2.0_main_1\heap_4.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdint.h
 gc_2.0_main_1\heap_4.o: ../Core/Inc/FreeRTOSConfig.h
 gc_2.0_main_1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 gc_2.0_main_1\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

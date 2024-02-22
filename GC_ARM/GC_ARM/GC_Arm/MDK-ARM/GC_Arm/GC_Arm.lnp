@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu=Cortex-M4.fp.sp
 "gc_arm\startup_stm32f407xx.o"
 "gc_arm\arm_task.o"
 "gc_arm\as5600_task.o"

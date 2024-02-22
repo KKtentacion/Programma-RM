@@ -1,8 +1,8 @@
 gc_arm\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
-gc_arm\timers.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdlib.h
+gc_arm\timers.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdlib.h
 gc_arm\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-gc_arm\timers.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stddef.h
-gc_arm\timers.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdint.h
+gc_arm\timers.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+gc_arm\timers.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdint.h
 gc_arm\timers.o: ../Inc/FreeRTOSConfig.h
 gc_arm\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 gc_arm\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

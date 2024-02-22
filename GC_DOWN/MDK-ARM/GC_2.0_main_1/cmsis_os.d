@@ -1,9 +1,9 @@
 gc_2.0_main_1\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
-gc_2.0_main_1\cmsis_os.o: D:\keil c51\ARM\ARMCC\Bin\..\include\string.h
+gc_2.0_main_1\cmsis_os.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\string.h
 gc_2.0_main_1\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 gc_2.0_main_1\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-gc_2.0_main_1\cmsis_os.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stddef.h
-gc_2.0_main_1\cmsis_os.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdint.h
+gc_2.0_main_1\cmsis_os.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+gc_2.0_main_1\cmsis_os.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdint.h
 gc_2.0_main_1\cmsis_os.o: ../Core/Inc/FreeRTOSConfig.h
 gc_2.0_main_1\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 gc_2.0_main_1\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

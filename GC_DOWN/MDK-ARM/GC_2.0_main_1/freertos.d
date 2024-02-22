@@ -1,7 +1,7 @@
 gc_2.0_main_1\freertos.o: ../Core/Src/freertos.c
 gc_2.0_main_1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-gc_2.0_main_1\freertos.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stddef.h
-gc_2.0_main_1\freertos.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdint.h
+gc_2.0_main_1\freertos.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+gc_2.0_main_1\freertos.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdint.h
 gc_2.0_main_1\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 gc_2.0_main_1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 gc_2.0_main_1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -54,9 +54,9 @@ gc_2.0_main_1\freertos.o: ../User/struct_typedef.h
 gc_2.0_main_1\freertos.o: ..\User\DriverLayer\drv_can.h
 gc_2.0_main_1\freertos.o: ..\ROTS_task\chassis_control.h
 gc_2.0_main_1\freertos.o: ..\User\AlgorithmLayer\PID.h
-gc_2.0_main_1\freertos.o: D:\keil c51\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\arm_math.h
-gc_2.0_main_1\freertos.o: D:\keil c51\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
-gc_2.0_main_1\freertos.o: D:\keil c51\ARM\ARMCC\Bin\..\include\string.h
-gc_2.0_main_1\freertos.o: D:\keil c51\ARM\ARMCC\Bin\..\include\math.h
+gc_2.0_main_1\freertos.o: E:\Keil_pack\ARM\CMSIS\5.0.1\CMSIS\Include\arm_math.h
+gc_2.0_main_1\freertos.o: E:\Keil_pack\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+gc_2.0_main_1\freertos.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\string.h
+gc_2.0_main_1\freertos.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\math.h
 gc_2.0_main_1\freertos.o: ..\ROTS_task\rc_check.h
 gc_2.0_main_1\freertos.o: ..\ROTS_task\gantry.h

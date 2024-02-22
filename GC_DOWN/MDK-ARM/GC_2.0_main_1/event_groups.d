@@ -1,8 +1,8 @@
 gc_2.0_main_1\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-gc_2.0_main_1\event_groups.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdlib.h
+gc_2.0_main_1\event_groups.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdlib.h
 gc_2.0_main_1\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-gc_2.0_main_1\event_groups.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stddef.h
-gc_2.0_main_1\event_groups.o: D:\keil c51\ARM\ARMCC\Bin\..\include\stdint.h
+gc_2.0_main_1\event_groups.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+gc_2.0_main_1\event_groups.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdint.h
 gc_2.0_main_1\event_groups.o: ../Core/Inc/FreeRTOSConfig.h
 gc_2.0_main_1\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 gc_2.0_main_1\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
