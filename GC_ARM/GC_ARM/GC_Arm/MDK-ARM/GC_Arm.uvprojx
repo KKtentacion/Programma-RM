@@ -395,6 +395,11 @@
           <GroupName>RTOS_task</GroupName>
           <Files>
             <File>
+              <FileName>Potocal_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RTOS_task\Potocal_task.c</FilePath>
+            </File>
+            <File>
               <FileName>Arm_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\RTOS_task\Arm_task.c</FilePath>
@@ -862,14 +867,14 @@
           <GroupName>PotocaLayer</GroupName>
           <Files>
             <File>
-              <FileName>judge.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\PotocaLayer\judge.c</FilePath>
-            </File>
-            <File>
               <FileName>rc_potocal.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\PotocaLayer\rc_potocal.c</FilePath>
+            </File>
+            <File>
+              <FileName>judge.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PotocaLayer\judge.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 E:\NewRM\Programma-RM\Programma-RM\GC_ARM\GC_ARM\GC_Arm\MDK-ARM\GC_Arm.uvprojx
-Project File Date:  02/22/2024
+Project File Date:  02/23/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Keil_MDK\ARM\ARMCC\Bin'
@@ -38,23 +38,27 @@ compiling Arm_task.c...
   #endif
 ../Inc/drv_can.h(32): warning:  #1-D: last line of file ends without a newline
   #endif
-RTOS_task\Arm_task.c(51): warning:  #1295-D: Deprecated declaration DM_Enable - give arg types
+../Inc/as5600_task.h(115): warning:  #1-D: last line of file ends without a newline
+  #endif
+RTOS_task\Arm_task.c(62): warning:  #1295-D: Deprecated declaration DM_Enable - give arg types
   static void DM_Enable(); //达妙电机使能
-RTOS_task\Arm_task.c(52): warning:  #1295-D: Deprecated declaration DM_Init - give arg types
+RTOS_task\Arm_task.c(63): warning:  #1295-D: Deprecated declaration DM_Init - give arg types
   static void DM_Init(); 
-RTOS_task\Arm_task.c(53): warning:  #1295-D: Deprecated declaration Arm_control - give arg types
+RTOS_task\Arm_task.c(64): warning:  #1295-D: Deprecated declaration Arm_control - give arg types
   static void Arm_control();  //达妙电机初始化到初始位置
-RTOS_task\Arm_task.c(55): warning:  #1295-D: Deprecated declaration Sucker_Init - give arg types
+RTOS_task\Arm_task.c(66): warning:  #1295-D: Deprecated declaration Sucker_Init - give arg types
   static void Sucker_Init();
-RTOS_task\Arm_task.c(224): warning:  #1-D: last line of file ends without a newline
+RTOS_task\Arm_task.c(67): warning:  #1295-D: Deprecated declaration as5600_Control - give arg types
+  static void as5600_Control();
+RTOS_task\Arm_task.c(278): warning:  #1-D: last line of file ends without a newline
   }
-RTOS_task\Arm_task.c(113): warning:  #177-D: function "DM_Init"  was declared but never referenced
+RTOS_task\Arm_task.c(132): warning:  #177-D: function "DM_Init"  was declared but never referenced
   static void DM_Init()
-RTOS_task\Arm_task.c: 11 warnings, 0 errors
+RTOS_task\Arm_task.c: 13 warnings, 0 errors
 linking...
-Program Size: Code=21292 RO-data=1384 RW-data=280 ZI-data=20592  
+Program Size: Code=22906 RO-data=1394 RW-data=328 ZI-data=20592  
 FromELF: creating hex file...
-"GC_Arm\GC_Arm.axf" - 0 Error(s), 11 Warning(s).
+"GC_Arm\GC_Arm.axf" - 0 Error(s), 13 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -77,7 +81,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

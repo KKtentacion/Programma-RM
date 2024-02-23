@@ -2,10 +2,10 @@
 #include "main.h"
 #include "rc_potocal.h"
 #include "pid.h"
+uint16_t flag_can=0;
+
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
-
-uint16_t flag=0;
 
 //extern RC_ctrl_t rc_ctrl;
 extern uint16_t Up_ins_yaw;
@@ -23,12 +23,12 @@ int initflag3_Can2=0;
 
 float Max_pos1_Can1=0.42;
 float Min_pos1_Can1=-1.2;
-float Max_pos1_Can2=-0.7;
-float Min_pos1_Can2=-2.75;
+float Max_pos1_Can2=0;
+float Min_pos1_Can2=-1.3;
 float Max_pos2_Can2=1.03;
 float Min_pos2_Can2=-2.15;
-float Max_pos3_Can2=1.2;
-float Min_pos3_Can2=-4.37;
+float Max_pos3_Can2=3.5; //旧电机max=0.56
+float Min_pos3_Can2=-1.2;  //旧电机min=-0.16
 
 float Target_pos1_Can1;
 float Target_pos1_Can2;
@@ -154,13 +154,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *canHandle)
 							Target_pos2_Can2=MOTOR2_can2.position;
 							initflag2_Can2=1;
 						 } 
-
-
-
+ 
             }
                else if(packet.payload[0] == 0x03)
             {   //接收MOTOR3数据
-							flag=1;
+							flag_can=1;
 							MOTOR3_can2.p_int=(packet.payload[1]<<8)|packet.payload[2];
               MOTOR3_can2.v_int=(packet.payload[3]<<4)|(packet.payload[4]>>4);
               MOTOR3_can2.t_int=((packet.payload[4]&0xF)<<8)|packet.payload[5];
@@ -170,7 +168,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *canHandle)
 //              MOTOR3_t.torque = uint_to_float(MOTOR3_t.position, T_MIN, T_MAX, 12);
                if(initflag3_Can2==0)
 						 {
-							Target_pos3_Can2=MOTOR3_can2.position;
+							 Target_pos3_Can2=MOTOR3_can2.position*5.625;   //旧电机两个数据实际位置0.064目标位置0.36存在倍数差值
 							initflag3_Can2=1;
 						 } 
 

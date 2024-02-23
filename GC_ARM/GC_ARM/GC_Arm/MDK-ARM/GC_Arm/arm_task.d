@@ -57,3 +57,5 @@ gc_arm\arm_task.o: ../Inc/struct_typedef.h
 gc_arm\arm_task.o: ../Inc/drv_can.h
 gc_arm\arm_task.o: ../Inc/rc_potocal.h
 gc_arm\arm_task.o: ../Inc/tim.h
+gc_arm\arm_task.o: ../Inc/as5600_task.h
+gc_arm\arm_task.o: ../Inc/gpio.h

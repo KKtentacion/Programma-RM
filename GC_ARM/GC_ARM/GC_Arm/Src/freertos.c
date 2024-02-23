@@ -174,16 +174,8 @@ void StartDefaultTask(void const * argument)
 * @retval None
 */
 /* USER CODE END Header_StartTask04 */
-void StartTask04(void const * argument)
-{
-  /* USER CODE BEGIN StartTask04 */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+
   /* USER CODE END StartTask04 */
-}
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */

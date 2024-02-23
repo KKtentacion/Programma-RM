@@ -6,6 +6,7 @@
 #include "pid.h"
 #include "drv_can.h"
 #include "tim.h"
+#include "as5600_task.h"
 extern Motor_t MOTOR1_can1;
 extern Motor_t MOTOR2_can1;
 extern Motor_t MOTOR3_can1;
@@ -17,6 +18,12 @@ extern float Target_pos1_Can1;
 extern float Target_pos1_Can2;
 extern float Target_pos2_Can2;
 extern float Target_pos3_Can2;
+
+extern float angle1_can1;
+extern float angle1_can2;
+extern float angle2_can2;
+extern float angle3_can2;
+extern float as_flag;
 
 extern float Max_pos1_Can1;
 extern float Min_pos1_Can1;
@@ -33,6 +40,10 @@ static float increment=0.005;//0.003
 float pid_pos1;
 float pid_pos2;
 float DM_v;
+float angle1_can1_send;
+float angle1_can2_send;
+float angle2_can2_send;
+float angle3_can2_send;
 int16_t target_speed_can_1[4];
 int16_t target_speed_can_2[4];
 
@@ -53,6 +64,7 @@ static void DM_Init();
 static void Arm_control();  //达妙电机初始化到初始位置
 void dji_motor_control(void);
 static void Sucker_Init();
+static void as5600_Control();
 void StartTask02(void const * argument)
 {
   /* USER CODE BEGIN StartTask02 */
@@ -69,18 +81,25 @@ void StartTask02(void const * argument)
   pid_init(&last_pid,10,0.1,0,30000,300000);
 //  DM_Init();
   for(;;)
-  {   if(rc_ctrl.rc.s[0]==1)
+  {   
+		if(as_flag)
+		{
+			as5600_Control();
+		}
+		else
+		{
+			if(rc_ctrl.rc.s[0]==1)
       {
         Arm_control();
       }
-     if(shift_flag==0&&ctrl_flag==0)
-    {
+      if(shift_flag==0&&ctrl_flag==0)
+      {
        target_speed_can_1[0]=0;
-    }
-    if(g_flag==0&&b_flag==0)
-    {
+      }
+      if(g_flag==0&&b_flag==0)
+      {
        target_speed_can_2[0]=0;
-    }
+      }
    		PosSpeed_CtrlMotor(0x101,Target_pos1_Can1,2);
       HAL_Delay(1);
       PosSpeed_CtrlMotor2(0x101,Target_pos1_Can2,5);
@@ -93,21 +112,21 @@ void StartTask02(void const * argument)
       HAL_Delay(1);
       dji_motor_control();
       osDelay(1);
+		}
   }
   /* USER CODE END StartTask02 */
 }
 
 static void DM_Enable()
 { 
-
-//  HAL_Delay(1000);
-//  Enable_Ctrl2(0x101,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
-//  HAL_Delay(1000);
-//  Enable_Ctrl2(0x102,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
-//  HAL_Delay(1000);
+	osDelay(1000);
+  Enable_Ctrl2(0x101,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
+	osDelay(1000);
+  Enable_Ctrl2(0x102,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
+	osDelay(1000);
   Enable_Ctrl2(0x103,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
-  HAL_Delay(1000); 
-//  Enable_Ctrl(0x101,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
+	osDelay(1000);
+  Enable_Ctrl(0x101,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
 }
 
 static void DM_Init()
@@ -151,8 +170,8 @@ static void Arm_control()
 		{
 			Target_pos1_Can2=Target_pos1_Can2-increment;
 		}
-		//Target_pos1_Can2=Target_pos1_Can2>Max_pos1_Can2?Max_pos1_Can2:Target_pos1_Can2;
-		//Target_pos1_Can2=Target_pos1_Can2<Min_pos1_Can2?Min_pos1_Can2:Target_pos1_Can2;
+		Target_pos1_Can2=Target_pos1_Can2>Max_pos1_Can2?Max_pos1_Can2:Target_pos1_Can2;
+		Target_pos1_Can2=Target_pos1_Can2<Min_pos1_Can2?Min_pos1_Can2:Target_pos1_Can2;
 		
 		if(z_flag!=0)
 		{
@@ -221,4 +240,39 @@ static void Sucker_Init()
 	HAL_TIM_PWM_Stop(&htim1,TIM_CHANNEL_1);
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,1000);
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
+}
+
+static void as5600_Control()
+{
+	PosSpeed_CtrlMotor(0x101,0,2);
+	osDelay(100);
+	PosSpeed_CtrlMotor2(0x101,0,5);
+	osDelay(100);
+	PosSpeed_CtrlMotor2(0x102,0,5);
+	osDelay(100);
+	PosSpeed_CtrlMotor2(0x103,0,5);
+	osDelay(100);	
+	angle1_can1_send=angle1_can1*3.14f/180.f;
+	angle1_can1_send = 0.5;
+	
+	angle1_can1_send=angle1_can1_send>Max_pos1_Can1?Max_pos1_Can1:angle1_can1_send;
+	angle1_can1_send=angle1_can1_send<Min_pos1_Can1?Min_pos1_Can1:angle1_can1_send;
+	
+	angle1_can2_send=angle1_can2_send>Max_pos1_Can2?Max_pos1_Can2:angle1_can2_send;
+	angle1_can2_send=angle1_can2_send<Min_pos1_Can2?Min_pos1_Can2:angle1_can2_send;
+	
+	angle2_can2_send=angle2_can2_send>Max_pos2_Can2?Max_pos2_Can2:angle2_can2_send;
+	angle2_can2_send=angle2_can2_send<Min_pos2_Can2?Min_pos2_Can2:angle2_can2_send;
+	
+	angle3_can2_send=angle3_can2_send>Max_pos3_Can2?Max_pos3_Can2:angle3_can2_send;
+	angle3_can2_send=angle3_can2_send<Min_pos3_Can2?Min_pos3_Can2:angle3_can2_send;
+	
+	PosSpeed_CtrlMotor(0x101,angle1_can1_send,2);
+	osDelay(100);
+//	PosSpeed_CtrlMotor2(0x101,angle1_can2,5);
+//	osDelay(100);
+//	PosSpeed_CtrlMotor2(0x102,angle2_can2,5);
+//	osDelay(100);
+//	PosSpeed_CtrlMotor2(0x103,angle3_can2,5);
+//	osDelay(100);
 }

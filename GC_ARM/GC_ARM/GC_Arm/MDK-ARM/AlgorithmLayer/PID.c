@@ -1,4 +1,6 @@
 #include "PID.h"
+uint16_t flag_enable=0;
+
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 
@@ -105,6 +107,8 @@ void set_motor_voltage(uint8_t id_range, int32_t v1, int16_t v2, int16_t v3, int
  
  void Enable_Ctrl2(uint16_t ID, uint8_t data0, uint8_t data1,uint8_t data2, uint8_t data3, uint8_t data4,uint8_t data5,uint8_t data6,uint8_t data7)
  {
+		flag_enable=1;
+	 
     static CAN_TxPacketTypeDef packet;
     
     packet.hdr.StdId = ID;
