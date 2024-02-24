@@ -36,9 +36,9 @@ void Delay(vu32 nCount)
 		if(TxData[0]==0xAB&&TxData[17]==0xCD)
 		{
 			memcpy(&angle1_can1,&TxData[1],4);
-			memcpy(&angle1_can2,&TxData[5],4);
+			memcpy(&angle3_can2,&TxData[5],4);
 			memcpy(&angle2_can2,&TxData[9],4);   
-			memcpy(&angle3_can2,&TxData[13],4);  
+			memcpy(&angle1_can2,&TxData[13],4);  
 		}
 		osDelay(1);
 	}

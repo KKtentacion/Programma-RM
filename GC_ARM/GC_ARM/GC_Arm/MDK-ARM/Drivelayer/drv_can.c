@@ -23,8 +23,8 @@ int initflag3_Can2=0;
 
 float Max_pos1_Can1=0.42;
 float Min_pos1_Can1=-1.2;
-float Max_pos1_Can2=0;
-float Min_pos1_Can2=-1.3;
+float Max_pos1_Can2=0.5;
+float Min_pos1_Can2=-1.5;
 float Max_pos2_Can2=1.03;
 float Min_pos2_Can2=-2.15;
 float Max_pos3_Can2=3.5; //旧电机max=0.56
@@ -168,7 +168,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *canHandle)
 //              MOTOR3_t.torque = uint_to_float(MOTOR3_t.position, T_MIN, T_MAX, 12);
                if(initflag3_Can2==0)
 						 {
-							 Target_pos3_Can2=MOTOR3_can2.position*5.625;   //旧电机两个数据实际位置0.064目标位置0.36存在倍数差值
+							 Target_pos3_Can2=MOTOR3_can2.position;//*5.625;   //旧电机两个数据实际位置0.064目标位置0.36存在倍数差值
 							initflag3_Can2=1;
 						 } 
 

@@ -404,11 +404,6 @@
               <FileType>1</FileType>
               <FilePath>.\RTOS_task\Arm_task.c</FilePath>
             </File>
-            <File>
-              <FileName>as5600_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\RTOS_task\as5600_task.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -866,6 +861,11 @@
         <Group>
           <GroupName>PotocaLayer</GroupName>
           <Files>
+            <File>
+              <FileName>as5600_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RTOS_task\as5600_task.c</FilePath>
+            </File>
             <File>
               <FileName>rc_potocal.c</FileName>
               <FileType>1</FileType>
