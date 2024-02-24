@@ -35,6 +35,16 @@ extern float Min_pos2_Can2;
 extern float Max_pos3_Can2;
 extern float Min_pos3_Can2;
 
+float motor1_can1_zeropos = 0.46;
+float motor1_can2_zeropos = -1.48;
+float motor2_can2_zeropos = 0; //-0.5;
+float motor3_can2_zeropos = -0.015;
+
+float setmotor1_can1;
+float setmotor1_can2;
+float setmotor2_can2;
+float setmotor3_can2;
+
 float increment_can2_3=0.0001;//0.003
 float increment_can1_1=0.005;//0.002
 static float increment=0.005;//0.003
@@ -83,7 +93,7 @@ void StartTask02(void const * argument)
 //  DM_Init();
   for(;;)
   {   
-		if(as_flag)
+		if(as_flag&&rc_ctrl.rc.s[0]==3)
 		{
 			if(as_init_flag)
 			{
@@ -115,7 +125,21 @@ void StartTask02(void const * argument)
 
 			target_speed_can_1[0]=-21*45;
 			}
-			
+			     if(g_flag!=0)
+    {
+      
+       target_speed_can_2[0]=19*45;
+    }
+     else if(b_flag!=0)
+    {
+      
+       target_speed_can_2[0]=-19*45;
+    }
+		else {
+		target_speed_can_2[0] = 0;
+		
+		}
+		
 			if(rc_ctrl.rc.s[1]==1)
      {
        __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,2000); 
@@ -144,14 +168,20 @@ void StartTask02(void const * argument)
 			{
 			 target_speed_can_2[0]=0;
 			}
-			PosSpeed_CtrlMotor(0x101,Target_pos1_Can1,2);
+			
+			Target_pos1_Can1=motor1_can1_zeropos+(-1.43);
+			Target_pos1_Can2=motor1_can2_zeropos+ 1.5;
+			Target_pos2_Can2=motor2_can2_zeropos+(-1.33);
+			Target_pos3_Can2=motor3_can2_zeropos-(-0.01/25.f);
+			
+			PosSpeed_CtrlMotor(0x101,Target_pos1_Can1,2);    //zeropos 0.46
 			HAL_Delay(1);
-			PosSpeed_CtrlMotor2(0x101,Target_pos1_Can2,5);
+			PosSpeed_CtrlMotor2(0x101,Target_pos1_Can2,5);		//zeropos -1.48
 			HAL_Delay(1);
-			PosSpeed_CtrlMotor2(0x102,Target_pos2_Can2,5);
+			PosSpeed_CtrlMotor2(0x102,Target_pos2_Can2,5);		//zeropos -0.5
 			HAL_Delay(1);
 			//MY_DMPos_Control(&DM_pid_3,0x203,Target_pos3_Can2,MOTOR3_can2.position);
-			MIT_CtrlMotor2(0x03,Target_pos3_Can2,3,20,3.5,0 );
+			MIT_CtrlMotor2(0x03,Target_pos3_Can2,3,20,3.5,0 );//zeropos -0.0071
 			//PosSpeed_CtrlMotor2(0x103,Target_pos3_Can2,5);
 			HAL_Delay(1);
 			dji_motor_control();
@@ -168,7 +198,7 @@ static void DM_Enable()
 	osDelay(1);
   Enable_Ctrl2(0x102,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
 	osDelay(1);
-  Enable_Ctrl2(0x03,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
+	Enable_Ctrl2(0x03,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
 	osDelay(1);
   Enable_Ctrl(0x101,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
 }
@@ -293,7 +323,7 @@ static void as5600_Control()
 	angle1_can1_send=-angle1_can1*3.14f/180.f;
 	angle1_can2_send=-angle1_can2*3.14f/180.f;
 	angle2_can2_send=-angle2_can2*3.14f/180.f;
-	angle3_can2_send=-angle3_can2*3.14f/180.f;
+	angle3_can2_send=-angle3_can2*3.14f/180.f/25.f;
 	
 	angle1_can1_send=angle1_can1_send>Max_pos1_Can1?Max_pos1_Can1:angle1_can1_send;
 	angle1_can1_send=angle1_can1_send<Min_pos1_Can1?Min_pos1_Can1:angle1_can1_send;
@@ -313,7 +343,7 @@ static void as5600_Control()
 	osDelay(1);
 	PosSpeed_CtrlMotor2(0x102,angle2_can2_send,5);
 	osDelay(1);
-	PosSpeed_CtrlMotor2(0x103,angle3_can2_send,0.5);
+	MIT_CtrlMotor2(0x03,angle3_can2_send,3,20,3.5,0);
 	
-	osDelay(1);
+	osDelay(1);	
 }

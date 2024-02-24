@@ -154,7 +154,7 @@
           <Type>0</Type>
           <LineNumber>277</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134236768</Address>
+          <Address>134236772</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -170,7 +170,7 @@
           <Type>0</Type>
           <LineNumber>279</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134236770</Address>
+          <Address>134236774</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -186,7 +186,7 @@
           <Type>0</Type>
           <LineNumber>281</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134236780</Address>
+          <Address>134236784</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -358,6 +358,26 @@
           <count>12</count>
           <WinNumber>2</WinNumber>
           <ItemText>MOTOR3_can2.position</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>angle2_can2_send</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>angle3_can2_send</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>MOTOR1_can1.position</ItemText>
+        </Ww>
+        <Ww>
+          <count>16</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>MOTOR1_can2.position</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>
