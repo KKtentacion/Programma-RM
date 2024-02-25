@@ -10,14 +10,14 @@
 #include "main.h"
 #include "usart.h"
 extern float angle;
-uint8_t Serial_RxPacket[19]={0};
+//uint8_t Serial_RxPacket[19]={0};
 
 static void Data_Concatenation(void);
 void StartTask03(void const * argument)
 {
   /* USER CODE BEGIN StartTask03 */
   /* Infinite loop */
-  HAL_UART_Receive_IT(&huart6,(uint8_t *)Serial_RxPacket,19);
+  //HAL_UART_Receive_IT(&huart6,(uint8_t *)Serial_RxPacket,19);
   __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE); //使能IDLE中断
 	HAL_UART_Receive_DMA(&huart1,rx_buffer,100); //开启接收
   for(;;)
@@ -53,11 +53,11 @@ void StartTask03(void const * argument)
 /*
 拼接函数
 */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-  if(huart->Instance==USART6)
-  {
+//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+//{
+//  if(huart->Instance==USART6)
+//  {
 
-  }
-      HAL_UART_Receive_IT(&huart6,(uint8_t *)Serial_RxPacket,19);
- }
+//  }
+//      HAL_UART_Receive_IT(&huart6,(uint8_t *)Serial_RxPacket,19);
+// }

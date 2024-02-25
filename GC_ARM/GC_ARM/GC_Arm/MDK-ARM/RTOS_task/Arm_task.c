@@ -7,6 +7,8 @@
 #include "drv_can.h"
 #include "tim.h"
 #include "as5600_task.h"
+#include "usart.h"
+extern UART_HandleTypeDef huart6;
 extern Motor_t MOTOR1_can1;
 extern Motor_t MOTOR2_can1;
 extern Motor_t MOTOR3_can1;
@@ -160,6 +162,13 @@ void StartTask02(void const * argument)
 			{
 				Arm_control();
 			}
+			else if(rc_ctrl.rc.s[0]==2)
+			{
+				Target_pos1_Can1=motor1_can1_zeropos+(-1.43);
+				Target_pos1_Can2=motor1_can2_zeropos+(1.5);
+				Target_pos2_Can2=motor2_can2_zeropos+(-1.33);
+				Target_pos3_Can2=motor3_can2_zeropos-(-0.01/25.f);
+			}
 			if(shift_flag==0&&ctrl_flag==0)
 			{
 			 target_speed_can_1[0]=0;
@@ -168,11 +177,6 @@ void StartTask02(void const * argument)
 			{
 			 target_speed_can_2[0]=0;
 			}
-			
-			Target_pos1_Can1=motor1_can1_zeropos+(-1.43);
-			Target_pos1_Can2=motor1_can2_zeropos+ 1.5;
-			Target_pos2_Can2=motor2_can2_zeropos+(-1.33);
-			Target_pos3_Can2=motor3_can2_zeropos-(-0.01/25.f);
 			
 			PosSpeed_CtrlMotor(0x101,Target_pos1_Can1,2);    //zeropos 0.46
 			HAL_Delay(1);
@@ -185,6 +189,8 @@ void StartTask02(void const * argument)
 			//PosSpeed_CtrlMotor2(0x103,Target_pos3_Can2,5);
 			HAL_Delay(1);
 			dji_motor_control();
+			uint8_t rxui[8] = "abddf";
+			HAL_UART_Transmit(&huart6,rxui,8,0xff);
 			osDelay(1);
 		}
   }

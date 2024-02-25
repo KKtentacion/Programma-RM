@@ -63,6 +63,7 @@ void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void StartTask03(void const * argument);
 void StartTask04(void const * argument);
+void StartTask05(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -117,13 +118,13 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(Arm_Task, StartTask02, osPriorityNormal, 0, 128);
   Arm_TaskHandle = osThreadCreate(osThread(Arm_Task), NULL);
 
-  /* definition and creation of sucker_Task */
-  osThreadDef(sucker_Task, StartTask03, osPriorityNormal, 0, 128);
-  sucker_TaskHandle = osThreadCreate(osThread(sucker_Task), NULL);
+  /* definition and creation of Potocal_task */
+  osThreadDef(Potocal_task, StartTask03, osPriorityNormal, 0, 128);
+  sucker_TaskHandle = osThreadCreate(osThread(Potocal_task), NULL);
 
-  /* definition and creation of remote_task */
-  osThreadDef(remote_task, StartTask04, osPriorityNormal, 0, 128);
-  remote_taskHandle = osThreadCreate(osThread(remote_task), NULL);
+  /* definition and creation of as5600_task */
+  osThreadDef(as5600_task, StartTask04, osPriorityNormal, 0, 128);
+  remote_taskHandle = osThreadCreate(osThread(as5600_task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */

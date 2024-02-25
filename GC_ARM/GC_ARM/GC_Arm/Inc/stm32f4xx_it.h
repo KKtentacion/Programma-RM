@@ -27,7 +27,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "struct_typedef.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -42,7 +42,17 @@
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+ typedef struct
+  {
+    uint8_t header;
+		float len;
+		//float z;
+    float angle1_can1;
+    float angle1_can2;
+		float angle2_can2;
+		float angle3_can2;
+		//float angle_2006;
+  } Vision_Recv_s;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

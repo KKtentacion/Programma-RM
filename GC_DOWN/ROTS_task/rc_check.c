@@ -4,7 +4,7 @@
 #include "arm_math.h"
 #include "cmsis_os.h"
 #include "rc_check.h"
-
+#include "usart.h"
 
 /* USER CODE BEGIN Header_StartTask02 */
 /**
@@ -17,11 +17,9 @@ void StartCheckTask(void const * argument)
 {
   /* USER CODE BEGIN StartTask02 */
   /* Infinite loop */
-	
   for(;;)
   {
-				
     osDelay(1);
   }
   /* USER CODE END StartTask02 */
-}
+} 

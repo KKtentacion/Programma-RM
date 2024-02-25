@@ -59,3 +59,4 @@ gc_arm\arm_task.o: ../Inc/rc_potocal.h
 gc_arm\arm_task.o: ../Inc/tim.h
 gc_arm\arm_task.o: ../Inc/as5600_task.h
 gc_arm\arm_task.o: ../Inc/gpio.h
+gc_arm\arm_task.o: ../Inc/usart.h

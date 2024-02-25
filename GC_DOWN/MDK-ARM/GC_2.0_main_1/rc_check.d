@@ -60,3 +60,4 @@ gc_2.0_main_1\rc_check.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\string.h
 gc_2.0_main_1\rc_check.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\math.h
 gc_2.0_main_1\rc_check.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 gc_2.0_main_1\rc_check.o: ..\ROTS_task\rc_check.h
+gc_2.0_main_1\rc_check.o: ../Core/Inc/usart.h

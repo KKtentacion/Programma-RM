@@ -35,4 +35,5 @@ gc_arm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 gc_arm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 gc_arm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 gc_arm\stm32f4xx_it.o: ../Inc/stm32f4xx_it.h
+gc_arm\stm32f4xx_it.o: ../Inc/struct_typedef.h
 gc_arm\stm32f4xx_it.o: ../Inc/drv_usart.h

@@ -22,12 +22,18 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 E:\NewRM\Programma-RM\Programma-RM\GC_ARM\GC_ARM\GC_Arm\MDK-ARM\GC_Arm.uvprojx
-Project File Date:  02/24/2024
+Project File Date:  02/25/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Keil_MDK\ARM\ARMCC\Bin'
 Build target 'GC_Arm'
-compiling Arm_task.c...
+compiling stm32f4xx_it.c...
+../Inc/drv_usart.h(17): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Src/stm32f4xx_it.c(379): warning:  #550-D: variable "temp"  was set but never used
+    uint32_t temp;
+../Src/stm32f4xx_it.c: 2 warnings, 0 errors
+compiling Potocal_task.c...
 ../Inc/PID.h(60): warning:  #1295-D: Deprecated declaration down_inherit - give arg types
   void down_inherit();//速度继承			
 ../Inc/PID.h(74): warning:  #1-D: last line of file ends without a newline
@@ -38,29 +44,15 @@ compiling Arm_task.c...
   #endif
 ../Inc/drv_can.h(32): warning:  #1-D: last line of file ends without a newline
   #endif
-../Inc/as5600_task.h(115): warning:  #1-D: last line of file ends without a newline
-  #endif
-RTOS_task\Arm_task.c(73): warning:  #1295-D: Deprecated declaration DM_Enable - give arg types
-  static void DM_Enable(); //达妙电机使能
-RTOS_task\Arm_task.c(74): warning:  #1295-D: Deprecated declaration DM_Init - give arg types
-  static void DM_Init(); 
-RTOS_task\Arm_task.c(75): warning:  #1295-D: Deprecated declaration Arm_control - give arg types
-  static void Arm_control();  //达妙电机初始化到初始位置
-RTOS_task\Arm_task.c(77): warning:  #1295-D: Deprecated declaration Sucker_Init - give arg types
-  static void Sucker_Init();
-RTOS_task\Arm_task.c(78): warning:  #1295-D: Deprecated declaration as5600_Control - give arg types
-  static void as5600_Control();
-RTOS_task\Arm_task.c(173): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  			Target_pos1_Can2=motor1_can2_zeropos+ 1.5;
-RTOS_task\Arm_task.c(349): warning:  #1-D: last line of file ends without a newline
-  }
-RTOS_task\Arm_task.c(206): warning:  #177-D: function "DM_Init"  was declared but never referenced
-  static void DM_Init()
-RTOS_task\Arm_task.c: 14 warnings, 0 errors
+RTOS_task\Potocal_task.c(63): warning:  #1-D: last line of file ends without a newline
+  // }
+RTOS_task\Potocal_task.c(15): warning:  #177-D: function "Data_Concatenation"  was declared but never referenced
+  static void Data_Concatenation(void);
+RTOS_task\Potocal_task.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=24932 RO-data=1396 RW-data=348 ZI-data=20596  
+Program Size: Code=25276 RO-data=1408 RW-data=348 ZI-data=20700  
 FromELF: creating hex file...
-"GC_Arm\GC_Arm.axf" - 0 Error(s), 14 Warning(s).
+"GC_Arm\GC_Arm.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -83,7 +75,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

@@ -80,6 +80,8 @@ volatile uint8_t rx_len = 0;  //接收一帧数据的长度
 volatile uint8_t recv_end_flag = 0; //一帧数据接收完成标志
 uint8_t rx_buffer[100]={0};  //接收数据缓存数组
 uint16_t can_cnt_2;
+
+extern uint8_t uart_rx_buffer[100];
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -127,9 +129,11 @@ int main(void)
 	HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);//修改TIM2中断优先级
   CAN1_Init();
   CAN2_Init();
-  USART6_Init();
+//  USART6_Init();
 	USART3_Init();
 	HAL_TIM_Base_Start_IT(&htim1);
+	__HAL_UART_ENABLE_IT(&huart6, UART_IT_IDLE);
+	HAL_UART_Receive_DMA(&huart6, uart_rx_buffer, 100);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -146,8 +150,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//		Enable_Ctrl2(0x103,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
-//		Enable_Ctrl2(0x101,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC);
   }
   /* USER CODE END 3 */
 }

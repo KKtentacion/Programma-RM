@@ -42,7 +42,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+Vision_Recv_s recv;
+uint8_t uart_rx_buffer[100];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -374,11 +375,39 @@ void DMA2_Stream7_IRQHandler(void)
 void USART6_IRQHandler(void)
 {
   /* USER CODE BEGIN USART6_IRQn 0 */
+  uint32_t temp_flag = 0;
+  uint32_t temp;
+
+  temp_flag = __HAL_UART_GET_FLAG(&huart6, UART_FLAG_IDLE);
+  if ((temp_flag != RESET))
+  {
+    __HAL_UART_CLEAR_IDLEFLAG(&huart6);
+    temp = huart6.Instance->SR;
+    temp = huart6.Instance->DR;
+    HAL_UART_DMAStop(&huart6);
+    temp = hdma_usart6_rx.Instance->NDTR;
+
+		
+    if (uart_rx_buffer[0] != 0xA5)
+      return;
+    if (uart_rx_buffer[0] == 0xA5)
+    {
+      uint8_t *rx_buff = uart_rx_buffer;
+       
+			recv.header = rx_buff[0];
+			recv.len=(rx_buff[4])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
+			recv.angle1_can1=(rx_buff[8])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
+			recv.angle1_can2=(rx_buff[12])|(rx_buff[11])|(rx_buff[10])|(rx_buff[9]);
+			recv.angle2_can2=(rx_buff[16])|(rx_buff[15])|(rx_buff[14])|(rx_buff[13]);
+			recv.angle3_can2=(rx_buff[20])|(rx_buff[19])|(rx_buff[18])|(rx_buff[17]);
+			
+    }
+  }
 
   /* USER CODE END USART6_IRQn 0 */
   HAL_UART_IRQHandler(&huart6);
   /* USER CODE BEGIN USART6_IRQn 1 */
-
+  HAL_UART_Receive_DMA(&huart6, uart_rx_buffer, 100);
   /* USER CODE END USART6_IRQn 1 */
 }
 
