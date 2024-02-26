@@ -22,13 +22,13 @@ int initflag2_Can2=0;
 int initflag3_Can2=0;
 
 float Max_pos1_Can1=0.42;
-float Min_pos1_Can1=-1.2;
+float Min_pos1_Can1=-1.5;
 float Max_pos1_Can2=0.5;
 float Min_pos1_Can2=-1.5;
 float Max_pos2_Can2=1.03;
 float Min_pos2_Can2=-2.15;
-float Max_pos3_Can2=3.5; //旧电机max=0.56
-float Min_pos3_Can2=-1.2;  //旧电机min=-0.16
+float Max_pos3_Can2=-0.5; //旧电机max=0.56
+float Min_pos3_Can2=-5.6;  //旧电机min=-0.16 
 
 float Target_pos1_Can1;
 float Target_pos1_Can2;
