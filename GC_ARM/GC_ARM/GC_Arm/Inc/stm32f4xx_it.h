@@ -46,13 +46,21 @@
   {
     uint8_t header;
 		float len;
-		//float z;
     float angle1_can1;
     float angle1_can2;
 		float angle2_can2;
 		float angle3_can2;
-		//float angle_2006;
   } Vision_Recv_s;
+	 typedef struct
+  {
+    uint8_t header;
+		float z;
+    float angle1_can1;
+    float angle1_can2;
+		float angle2_can2;
+		float angle3_can2;
+		float angle_2006;
+  } Vision_Recv_s2;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

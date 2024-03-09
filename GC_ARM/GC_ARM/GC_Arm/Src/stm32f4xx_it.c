@@ -43,6 +43,7 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 Vision_Recv_s recv;
+Vision_Recv_s2 recv2;
 uint8_t uart_rx_buffer[100];
 /* USER CODE END PV */
 
@@ -394,12 +395,21 @@ void USART6_IRQHandler(void)
     {
       uint8_t *rx_buff = uart_rx_buffer;
        
+//			recv.header = rx_buff[0];
+//			recv.len=(rx_buff[4])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
+//			recv.angle1_can1=(rx_buff[8])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
+//			recv.angle1_can2=(rx_buff[12])|(rx_buff[11])|(rx_buff[10])|(rx_buff[9]);
+//			recv.angle2_can2=(rx_buff[16])|(rx_buff[15])|(rx_buff[14])|(rx_buff[13]);
+//			recv.angle3_can2=(rx_buff[20])|(rx_buff[19])|(rx_buff[18])|(rx_buff[17]);    zx data
+			
 			recv.header = rx_buff[0];
-			recv.len=(rx_buff[4])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
-			recv.angle1_can1=(rx_buff[8])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
-			recv.angle1_can2=(rx_buff[12])|(rx_buff[11])|(rx_buff[10])|(rx_buff[9]);
-			recv.angle2_can2=(rx_buff[16])|(rx_buff[15])|(rx_buff[14])|(rx_buff[13]);
-			recv.angle3_can2=(rx_buff[20])|(rx_buff[19])|(rx_buff[18])|(rx_buff[17]);
+			memcpy(&recv2.angle1_can1,&rx_buff[1],4);
+			memcpy(&recv2.angle3_can2,&rx_buff[5],4);
+			memcpy(&recv2.z,&rx_buff[5],4);
+			memcpy(&recv2.angle2_can2,&rx_buff[5],4);
+			memcpy(&recv2.angle1_can2,&rx_buff[5],4);
+			memcpy(&recv2.angle_2006,&rx_buff[5],4);
+
 			
     }
   }

@@ -39,7 +39,7 @@ extern float Min_pos3_Can2;
 float motor1_can1_zeropos = 0.46;
 float motor1_can2_zeropos = -1.48;
 float motor2_can2_zeropos = -0.7;
-float motor3_can2_zeropos = -2.91;
+float motor3_can2_zeropos = 0;
 
 float setmotor1_can1;
 float setmotor1_can2;
@@ -100,18 +100,22 @@ void StartTask02(void const * argument)
 //  DM_Init();
   for(;;)
   {   
-			if(as_flag&&rc_ctrl.rc.s[0]==3)
+			if(as_flag&&rc_ctrl.rc.s[0]==1)
 			{
 				As5600_control();
 			}
 			else if(rc_ctrl.rc.s[0]==3)
 			{
+				//Set_zero_pos();
 				Arm_control();
 			}
 			else if(rc_ctrl.rc.s[0]==2)
 			{
 				Vision_control();
 			}
+			
+			
+			osDelay(1);
 			
 			dji_motor_get();
 			
@@ -124,6 +128,13 @@ void StartTask02(void const * argument)
 			 target_speed_can_2[0]=0;
 			}
 
+			float send_data[4];
+			send_data[0]=0.1;//MOTOR1_can1.position;
+			send_data[1]=0.2;//MOTOR1_can2.position;
+			send_data[2]=0.3;//MOTOR2_can2.position;
+			send_data[3]=0.4;//MOTOR3_can2.position;
+			HAL_UART_Transmit(&huart6,(uint8_t*)send_data,16,HAL_MAX_DELAY);
+			
 			osDelay(1);
 			dji_motor_control();
 			osDelay(1);
@@ -171,7 +182,7 @@ static void Arm_control()
 		}
 		else if(e_flag!=0)
 		{
-			Target_pos1_Can1=Target_pos1_Can1-increment_can1_1;
+			Target_pos1_Can1=Target_pos1_Can1-increment_can1_1;	
 		}
 		Target_pos1_Can1=Target_pos1_Can1>Max_pos1_Can1?Max_pos1_Can1:Target_pos1_Can1;
 		Target_pos1_Can1=Target_pos1_Can1<Min_pos1_Can1?Min_pos1_Can1:Target_pos1_Can1;
@@ -254,27 +265,28 @@ static void As5600_control()
 	osDelay(1);
 	PosSpeed_CtrlMotor2(0x102,angle2_can2_send,0.5);
 	osDelay(1);
+//	MIT_CtrlMotor2(0x03,angle3_can2_send,3,20,3.5,0 );
 	PosSpeed_CtrlMotor2(0x103,angle3_can2_send,0.5);
 }
 
 static void Vision_control()
 {
-	Target_pos1_Can1=motor1_can1_zeropos;//+(-0.9);
+	Target_pos1_Can1=motor1_can1_zeropos-1.65;//+(-0.9);
 	
 	Target_pos1_Can1=Target_pos1_Can1>Max_pos1_Can1?Max_pos1_Can1:Target_pos1_Can1;
 	Target_pos1_Can1=Target_pos1_Can1<Min_pos1_Can1?Min_pos1_Can1:Target_pos1_Can1;
 	
-	Target_pos1_Can2=motor1_can2_zeropos;//+(1.59);
+	Target_pos1_Can2=motor1_can2_zeropos+1.22;//+(1.59);
 	
 	Target_pos1_Can2=Target_pos1_Can2>Max_pos1_Can2?Max_pos1_Can2:Target_pos1_Can2;
 	Target_pos1_Can2=Target_pos1_Can2<Min_pos1_Can2?Min_pos1_Can2:Target_pos1_Can2;
 	
-	Target_pos2_Can2=motor2_can2_zeropos;//+(0.3);
+	Target_pos2_Can2=motor2_can2_zeropos+1.52;//+(0.3);
 	
 	Target_pos2_Can2=Target_pos2_Can2>Max_pos2_Can2?Max_pos2_Can2:Target_pos2_Can2;
 	Target_pos2_Can2=Target_pos2_Can2<Min_pos2_Can2?Min_pos2_Can2:Target_pos2_Can2;
 	
-	Target_pos3_Can2=motor3_can2_zeropos;//+(-1.1);
+	Target_pos3_Can2=motor3_can2_zeropos-0.51;//+(-1.1);
 	
 	Target_pos3_Can2=Target_pos3_Can2>Max_pos3_Can2?Max_pos3_Can2:Target_pos3_Can2;
 	Target_pos3_Can2=Target_pos3_Can2<Min_pos3_Can2?Min_pos3_Can2:Target_pos3_Can2;
@@ -302,7 +314,7 @@ static void Set_zero_pos()
 	osDelay(1);
 	PosSpeed_CtrlMotor2(0x102,Target_pos2_Can2,0.5);		//zeropos -0.5
 	osDelay(1);
-	PosSpeed_CtrlMotor2(0x103,Target_pos3_Can2,5);
+		MIT_CtrlMotor2(0x03,Target_pos3_Can2,3,20,3.5,0 );
 	osDelay(1);
 }
 
