@@ -40,7 +40,7 @@ __initial_sp
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Heap_Size      EQU     0x200
+Heap_Size      EQU     0x0400
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
@@ -171,7 +171,7 @@ Reset_Handler    PROC
         IMPORT  SystemInit
         IMPORT  __main
 
-                 LDR     R0, =SystemInit
+	                 LDR     R0, =SystemInit
                  BLX     R0
                  LDR     R0, =__main
                  BX      R0

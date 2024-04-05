@@ -22,33 +22,51 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 E:\NewRM\Programma-RM\Programma-RM\GC_DOWN\MDK-ARM\GC_2.0_main_1.uvprojx
-Project File Date:  02/25/2024
+Project File Date:  04/01/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Keil_MDK\ARM\ARMCC\Bin'
 Build target 'GC_2.0_main_1'
-compiling rc_check.c...
-..\ROTS_task\chassis_control.h(6): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\User\DriverLayer\drv_can.h(13): warning:  #1-D: last line of file ends without a newline
-  #endif
+compiling chassis_control.c...
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h(51): warning:  #47-D: incompatible redefinition of macro "__FPU_PRESENT" 
   #define __FPU_PRESENT             1U       /*!< FPU present                                   */
 ../Drivers/CMSIS/Include/core_cm4.h(79): warning:  #47-D: incompatible redefinition of macro "__FPU_USED" 
         #define __FPU_USED       1U
-..\User\PotocaLayer\rc_potocal.h(55): warning:  #1-D: last line of file ends without a newline
-  #endif
 ..\User\AlgorithmLayer\PID.h(14): warning:  #1295-D: Deprecated declaration down_inherit - give arg types
   void down_inherit();//速度继承							
 ..\User\AlgorithmLayer\PID.h(16): warning:  #1-D: last line of file ends without a newline
   							
-..\ROTS_task\rc_check.c(25): warning:  #1-D: last line of file ends without a newline
-  } 
-..\ROTS_task\rc_check.c: 8 warnings, 0 errors
+..\ROTS_task\chassis_control.h(6): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\DriverLayer\drv_usart.h(17): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\PotocaLayer\judge.h(280): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\DriverLayer\drv_can.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\PotocaLayer\rc_potocal.h(55): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\ROTS_task\chassis_control.c(37): warning:  #1295-D: Deprecated declaration Chassis_loop_Init - give arg types
+  static void Chassis_loop_Init(); //数据清0
+..\ROTS_task\chassis_control.c(38): warning:  #1295-D: Deprecated declaration Chassis_mode - give arg types
+  static void Chassis_mode();	//遥控器转底盘,底盘模式
+..\ROTS_task\chassis_control.c(39): warning:  #1295-D: Deprecated declaration Chassis_motol_speed_calculate - give arg types
+  static void Chassis_motol_speed_calculate(); //麦轮底盘解算
+..\ROTS_task\chassis_control.c(42): warning:  #1295-D: Deprecated declaration Chassis_current_give - give arg types
+  static void Chassis_current_give();   //发送电流
+..\ROTS_task\chassis_control.c(43): warning:  #1295-D: Deprecated declaration Chassis_keyboard_mode_1 - give arg types
+  static void Chassis_keyboard_mode_1();		//正常开车行使模式
+..\ROTS_task\chassis_control.c(44): warning:  #1295-D: Deprecated declaration Chassis_keyboard_mode_2 - give arg types
+  static void Chassis_keyboard_mode_2();		//以机械臂为正前方的行驶模式
+..\ROTS_task\chassis_control.c(45): warning:  #1295-D: Deprecated declaration speed_ramp - give arg types
+  static void speed_ramp(); //底盘软启动
+..\ROTS_task\chassis_control.c(332): warning:  #1-D: last line of file ends without a newline
+  }
+..\ROTS_task\chassis_control.c: 17 warnings, 0 errors
 linking...
-Program Size: Code=25908 RO-data=1384 RW-data=324 ZI-data=21060  
+Program Size: Code=25940 RO-data=1384 RW-data=320 ZI-data=21064  
 FromELF: creating hex file...
-"GC_2.0_main_1\GC_2.0_main_1" - 0 Error(s), 8 Warning(s).
+"GC_2.0_main_1\GC_2.0_main_1" - 0 Error(s), 17 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -74,9 +92,9 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.0.1
 
    * Component: ARM::CMSIS:DSP:1.5.1
-      Library file:  CMSIS/Lib/ARM/arm_cortexM4lf_math.lib
       Include file:  CMSIS/Include/arm_math.h
-Build Time Elapsed:  00:00:02
+      Library file:  CMSIS/Lib/ARM/arm_cortexM4lf_math.lib
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

@@ -34,6 +34,9 @@ gc_arm\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 gc_arm\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 gc_arm\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 gc_arm\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+gc_arm\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
+gc_arm\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
+gc_arm\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 gc_arm\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 gc_arm\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 gc_arm\main.o: ../Inc/FreeRTOSConfig.h
@@ -53,6 +56,12 @@ gc_arm\main.o: ../Inc/dma.h
 gc_arm\main.o: ../Inc/i2c.h
 gc_arm\main.o: ../Inc/tim.h
 gc_arm\main.o: ../Inc/usart.h
+gc_arm\main.o: ../Inc/usb_device.h
+gc_arm\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
+gc_arm\main.o: ../Inc/usbd_conf.h
+gc_arm\main.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdio.h
+gc_arm\main.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\stdlib.h
+gc_arm\main.o: E:\Keil_MDK\ARM\ARMCC\Bin\..\include\string.h
 gc_arm\main.o: ../Inc/gpio.h
 gc_arm\main.o: ../Inc/rc_potocal.h
 gc_arm\main.o: ../Inc/struct_typedef.h
@@ -60,3 +69,12 @@ gc_arm\main.o: ../Inc/drv_can.h
 gc_arm\main.o: ../Inc/rc_potocal.h
 gc_arm\main.o: ../Inc/pid.h
 gc_arm\main.o: ../Inc/drv_usart.h
+gc_arm\main.o: ../Inc/bsp_usb.h
+gc_arm\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
+gc_arm\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+gc_arm\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
+gc_arm\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+gc_arm\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+gc_arm\main.o: ../Inc/usbd_desc.h
+gc_arm\main.o: ../Inc/usbd_cdc_if.h
+gc_arm\main.o: ../Inc/stm32f4xx_it.h

@@ -4,7 +4,7 @@ const u8 TX_ADDRESS[TX_ADR_WIDTH]={0x34,0x43,0x10,0x10,0x01}; //发送地址
 const u8 RX_ADDRESS[RX_ADR_WIDTH]={0x34,0x43,0x10,0x10,0x01}; //接收地址					    
  
 
-float angle1_can1=0,angle1_can2=0,angle2_can2=0,angle3_can2=0;
+float angle1_can1=0,angle1_can2=0,angle2_can2=0,angle2_can1=0;
 int as_flag = 0;
 int ac=0;
 
@@ -33,12 +33,12 @@ void Delay(vu32 nCount)
 			ac=2;
 			as_flag = 1;
 		}
-		if(TxData[0]==0xAB&&TxData[17]==0xCD)
+		if(TxData[0]==0xA5)
 		{
 			memcpy(&angle1_can1,&TxData[1],4);
-			memcpy(&angle3_can2,&TxData[5],4);
-			memcpy(&angle2_can2,&TxData[9],4);   
-			memcpy(&angle1_can2,&TxData[13],4);  
+			memcpy(&angle2_can1,&TxData[5],4);
+			memcpy(&angle1_can2,&TxData[9],4);   
+			memcpy(&angle2_can2,&TxData[13],4);  
 		}
 		osDelay(1);
 	}

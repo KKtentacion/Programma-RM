@@ -42,7 +42,6 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit); 	//输出解算
 static void Chassis_current_give();   //发送电流
 static void Chassis_keyboard_mode_1();		//正常开车行使模式
 static void Chassis_keyboard_mode_2();		//以机械臂为正前方的行驶模式
-static void Chassis_keyboard_mode_3();		//兑矿取矿模式
 static void speed_ramp(); //底盘软启动
 
 
@@ -113,7 +112,6 @@ static void Chassis_mode()
 		// moving control by keyboard
 		else
 		{
-		
 			if(rc_ctrl.rc.s[0] == 2)		//右拨杆置最下端，正常行驶模式
 			{
 				Chassis_keyboard_mode_1();			
@@ -121,10 +119,6 @@ static void Chassis_mode()
 			else if (rc_ctrl.rc.s[0] == 3)		//右拨杆置中间，机械臂正前方模式
 			{
 				Chassis_keyboard_mode_2();
-			}
-			else if (rc_ctrl.rc.s[0] == 1)		//右拨杆置最上端，对矿取矿模式（wasd变成其他结构控制）
-			{
-				Chassis_keyboard_mode_3();
 			}
 		}
 				// moving	control by remote
@@ -335,9 +329,4 @@ static void Chassis_keyboard_mode_2()
         }
   }
 	
-}
-
-static void Chassis_keyboard_mode_3()
-{
-
 }

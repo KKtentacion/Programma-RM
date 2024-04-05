@@ -24,6 +24,7 @@
 #include "i2c.h"
 #include "tim.h"
 #include "usart.h"
+#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -32,6 +33,9 @@
 #include "drv_can.h"
 #include "drv_usart.h"
 #include "PID.h"
+#include "bsp_usb.h"
+#include "stm32f4xx_it.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +55,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+int a;
+void sum()
+{
+	a++;
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -82,6 +90,8 @@ uint8_t rx_buffer[100]={0};  //接收数据缓存数组
 uint16_t can_cnt_2;
 
 extern uint8_t uart_rx_buffer[100];
+
+USB_Init_Config_s config;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -134,10 +144,12 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim1);
 	__HAL_UART_ENABLE_IT(&huart6, UART_IT_IDLE);
 	HAL_UART_Receive_DMA(&huart6, uart_rx_buffer, 100);
+	config.rx_cbk = (void*)JOINT;
+	USBInit(config);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
-  MX_FREERTOS_Init();
+ MX_FREERTOS_Init();
 
   /* Start scheduler */
   osKernelStart();
@@ -150,6 +162,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		HAL_Delay(10);
   }
   /* USER CODE END 3 */
 }
@@ -178,7 +191,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLM = 6;
   RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;
+  RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();

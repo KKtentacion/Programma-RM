@@ -681,6 +681,11 @@
           <GroupName>ROTS_task</GroupName>
           <Files>
             <File>
+              <FileName>gantry.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ROTS_task\gantry.c</FilePath>
+            </File>
+            <File>
               <FileName>rc_check.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ROTS_task\rc_check.c</FilePath>
@@ -689,11 +694,6 @@
               <FileName>chassis_control.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ROTS_task\chassis_control.c</FilePath>
-            </File>
-            <File>
-              <FileName>gantry.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ROTS_task\gantry.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -42,8 +42,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-Vision_Recv_s recv;
-Vision_Recv_s2 recv2;
 uint8_t uart_rx_buffer[100];
 /* USER CODE END PV */
 
@@ -58,6 +56,7 @@ uint8_t uart_rx_buffer[100];
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern DMA_HandleTypeDef hdma_usart1_rx;
@@ -343,6 +342,20 @@ void CAN2_RX0_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles USB On The Go FS global interrupt.
+  */
+void OTG_FS_IRQHandler(void)
+{
+  /* USER CODE BEGIN OTG_FS_IRQn 0 */
+
+  /* USER CODE END OTG_FS_IRQn 0 */
+  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
+  /* USER CODE BEGIN OTG_FS_IRQn 1 */
+
+  /* USER CODE END OTG_FS_IRQn 1 */
+}
+
+/**
   * @brief This function handles DMA2 stream6 global interrupt.
   */
 void DMA2_Stream6_IRQHandler(void)
@@ -389,33 +402,26 @@ void USART6_IRQHandler(void)
     temp = hdma_usart6_rx.Instance->NDTR;
 
 		
-    if (uart_rx_buffer[0] != 0xA5)
-      return;
-    if (uart_rx_buffer[0] == 0xA5)
-    {
-      uint8_t *rx_buff = uart_rx_buffer;
-       
+//    if (uart_rx_buffer[0] != 0xA5)
+//      return;
+//    if (uart_rx_buffer[0] == 0xA5)
+//    {
+//      uint8_t *rx_buff = uart_rx_buffer;
+//			
 //			recv.header = rx_buff[0];
-//			recv.len=(rx_buff[4])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
-//			recv.angle1_can1=(rx_buff[8])|(rx_buff[3])|(rx_buff[2])|(rx_buff[1]);
-//			recv.angle1_can2=(rx_buff[12])|(rx_buff[11])|(rx_buff[10])|(rx_buff[9]);
-//			recv.angle2_can2=(rx_buff[16])|(rx_buff[15])|(rx_buff[14])|(rx_buff[13]);
-//			recv.angle3_can2=(rx_buff[20])|(rx_buff[19])|(rx_buff[18])|(rx_buff[17]);    zx data
-			
-			recv.header = rx_buff[0];
-			memcpy(&recv2.angle1_can1,&rx_buff[1],4);
-			memcpy(&recv2.angle3_can2,&rx_buff[5],4);
-			memcpy(&recv2.z,&rx_buff[5],4);
-			memcpy(&recv2.angle2_can2,&rx_buff[5],4);
-			memcpy(&recv2.angle1_can2,&rx_buff[5],4);
-			memcpy(&recv2.angle_2006,&rx_buff[5],4);
+//			memcpy(&recv.angle1_can1,&rx_buff[1],4);
+//			memcpy(&recv.angle2_can1,&rx_buff[5],4);
+//			memcpy(&recv.angle2_can2,&rx_buff[9],4);
+//			memcpy(&recv.angle1_can2,&rx_buff[13],4);
+////			memcpy(&recv2.z,&rx_buff[5],4);
+////			memcpy(&recv2.angle_2006,&rx_buff[5],4);
 
 			
-    }
+//    }
   }
 
   /* USER CODE END USART6_IRQn 0 */
-	
+  HAL_UART_IRQHandler(&huart6);
   /* USER CODE BEGIN USART6_IRQn 1 */
 	HAL_UART_IRQHandler(&huart6);
   HAL_UART_Receive_DMA(&huart6, uart_rx_buffer, 100);

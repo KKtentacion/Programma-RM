@@ -134,7 +134,7 @@ void set_motor_voltage(uint8_t id_range, int32_t v1, int16_t v2, int16_t v3, int
     }
     }
 }
- 
+ int iferr = 0;
 void set_motor_voltage_can_2(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
 {
   CAN_TxHeaderTypeDef tx_header;
@@ -153,7 +153,7 @@ void set_motor_voltage_can_2(uint8_t id_range, int16_t v1, int16_t v2, int16_t v
   tx_data[5] =    (v3)&0xff;
   tx_data[6] = (v4>>8)&0xff;
   tx_data[7] =    (v4)&0xff;
-  HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data,(uint32_t*)CAN_TX_MAILBOX0);
+  iferr = HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data,(uint32_t*)CAN_TX_MAILBOX0);
 }
 
 uint8_t CANx_SendStdData(CAN_HandleTypeDef* hcan,uint16_t ID,uint8_t *pData,uint16_t Len)

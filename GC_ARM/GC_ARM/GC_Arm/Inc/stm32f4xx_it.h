@@ -42,25 +42,7 @@
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
- typedef struct
-  {
-    uint8_t header;
-		float len;
-    float angle1_can1;
-    float angle1_can2;
-		float angle2_can2;
-		float angle3_can2;
-  } Vision_Recv_s;
-	 typedef struct
-  {
-    uint8_t header;
-		float z;
-    float angle1_can1;
-    float angle1_can2;
-		float angle2_can2;
-		float angle3_can2;
-		float angle_2006;
-  } Vision_Recv_s2;
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -81,6 +63,7 @@ void DMA2_Stream1_IRQHandler(void);
 void DMA2_Stream2_IRQHandler(void);
 void CAN2_TX_IRQHandler(void);
 void CAN2_RX0_IRQHandler(void);
+void OTG_FS_IRQHandler(void);
 void DMA2_Stream6_IRQHandler(void);
 void DMA2_Stream7_IRQHandler(void);
 void USART6_IRQHandler(void);

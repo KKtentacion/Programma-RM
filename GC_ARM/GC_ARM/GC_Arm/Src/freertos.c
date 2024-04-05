@@ -63,8 +63,8 @@ void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void StartTask03(void const * argument);
 void StartTask04(void const * argument);
-void StartTask05(void const * argument);
 
+extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
@@ -115,16 +115,16 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of Arm_Task */
-  osThreadDef(Arm_Task, StartTask02, osPriorityNormal, 0, 128);
+ osThreadDef(Arm_Task, StartTask02, osPriorityNormal, 0, 128);
   Arm_TaskHandle = osThreadCreate(osThread(Arm_Task), NULL);
 
-  /* definition and creation of Potocal_task */
-  osThreadDef(Potocal_task, StartTask03, osPriorityNormal, 0, 128);
-  sucker_TaskHandle = osThreadCreate(osThread(Potocal_task), NULL);
+  /* definition and creation of sucker_Task */
+  osThreadDef(sucker_Task, StartTask03, osPriorityNormal, 0, 128);
+  sucker_TaskHandle = osThreadCreate(osThread(sucker_Task), NULL);
 
-  /* definition and creation of as5600_task */
-  osThreadDef(as5600_task, StartTask04, osPriorityNormal, 0, 128);
-  remote_taskHandle = osThreadCreate(osThread(as5600_task), NULL);
+  /* definition and creation of remote_task */
+  osThreadDef(remote_task, StartTask04, osPriorityNormal, 0, 128);
+  remote_taskHandle = osThreadCreate(osThread(remote_task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -141,6 +141,8 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void const * argument)
 {
+  /* init code for USB_DEVICE */
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
   for(;;)
@@ -149,34 +151,6 @@ void StartDefaultTask(void const * argument)
   }
   /* USER CODE END StartDefaultTask */
 }
-
-/* USER CODE BEGIN Header_StartTask02 */
-/**
-* @brief Function implementing the Arm_Task thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTask02 */
-
-
-/* USER CODE BEGIN Header_StartTask03 */
-/**
-* @brief Function implementing the sucker_Task thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTask03 */
-
-
-/* USER CODE BEGIN Header_StartTask04 */
-/**
-* @brief Function implementing the remote_task thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTask04 */
-
-  /* USER CODE END StartTask04 */
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
